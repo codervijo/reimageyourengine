@@ -1,0 +1,55 @@
+# lamill.toml — per-site config consumed by lamill (portfolio/ops) and rankmill (content/audits).
+# [content] = stable identity, authored by hand. [todo] = volatile work state.
+# rankmill output lives in sites/<domain>/rankmill-output/, not here.
+
+schema = "lamill-toml-v1"
+
+[deploy]
+platform = "cf-pages"
+production_branch = "main"
+custom_domains = [
+    "reimageyourengine.com",
+]
+
+[index]
+indexnow_key = "e588e72aad5246343d93a1c681a9368d"
+indexnow_enabled = true
+
+[stack]
+framework = "astro"
+
+# Tracked todos for reimageyourengine.com. status: "done" | "open".
+[[todo]]
+status = "open"
+priority = "medium"
+task = "Check SEO: GSC indexation + coverage (revisit ~2026-10-31)"
+
+[[todo]]
+status = "open"
+priority = "medium"
+task = "Verify GA4 is receiving data (check Realtime after first traffic)"
+
+[[todo]]
+status = "open"
+priority = "low"
+task = "Confirm GSC verification + sitemap submitted (re-run deploy if it timed out)"
+
+[content]
+# Declarative content identity for this site.
+# Authored by the human; consumed by rankmill to generate drafts and run audits.
+# Leave fields empty until you have a deliberate answer. Empty is better than wrong.
+site_type = "b2b"
+primary_keyword = "rotating equipment consultant"
+secondary_keywords = [
+    "fluid systems engineer",
+    "equipment troubleshooting services",
+    "rotating equipment reliability",
+    "pump troubleshooting",
+    "compressor overheating diagnosis",
+    "PHA recommendation implementation",
+]
+icp = "Engineering managers, plant managers, reliability engineers, and industrial equipment owners responsible for pumps, compressors, blowers, engines, and fluid systems. They face equipment failures, excessive vibration, overheating, operational inefficiencies, plant downtime, or outstanding Process Hazard Analysis (PHA) recommendations. They value practical engineering expertise and experience across diverse mechanical systems."
+urgency_trigger = "Active equipment failures, excessive vibration or overheating, or outstanding PHA recommendations threatening plant uptime"
+penalty = "Continued downtime, higher repair costs, reduced reliability and potential safety or compliance risks"
+tone = "understated, technically accurate"
+law = ""                  # statute or regulation if applicable, else empty
