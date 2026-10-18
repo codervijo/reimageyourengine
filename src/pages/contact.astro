@@ -1,0 +1,15 @@
+---
+// Ported from genai/src/routes/contact.tsx
+import Layout from "../layouts/Layout.astro";
+import { ContactPage } from "../components/pages/ContactPage";
+---
+<Layout
+  title={"Contact Derek Hoyt — Reimagine Your Engine"}
+  description={"Contact Derek Hoyt about equipment troubleshooting, RAGAGEP gaps, or implementing PHA recommendations."}
+  ogTitle={"Contact Derek Hoyt — Reimagine Your Engine"}
+  ogDescription={"Discuss equipment symptoms or process-safety recommendations with Derek Hoyt."}
+  ogType="website"
+  twitterCard="summary"
+>
+  <ContactPage client:load />
+</Layout>

@@ -15,6 +15,12 @@ custom_domains = [
 indexnow_key = "e588e72aad5246343d93a1c681a9368d"
 indexnow_enabled = true
 
+[client]
+business_name = "Reiamge Your Engine"
+service_area = "Redding,CA"
+wants = "credibility"
+deadline = "Nov 2026"
+
 [stack]
 framework = "astro"
 

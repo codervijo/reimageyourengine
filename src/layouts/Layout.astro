@@ -1,0 +1,69 @@
+---
+// src/layouts/Layout.astro — shared chrome (head, header, footer).
+// Pass `seo={false}` and supply tags via <Fragment slot="head"> to write
+// the SEO block by hand (src/pages/index.astro does, for seo.test.js).
+import "../styles/global.css";
+import { Header, Footer } from "../components/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  twitterCard?: string;
+  seo?: boolean;
+}
+
+const site = "https://reimageyourengine.com";
+const {
+  title = "Reimagine Your Engine — Derek Hoyt",
+  description = "Derek Hoyt — rotating equipment, fluid systems, equipment reliability, and process-safety support.",
+  ogTitle = title,
+  ogDescription = description,
+  ogType = "website",
+  twitterCard = "summary_large_image",
+  seo = true,
+} = Astro.props;
+// Canonical MUST match the served URL incl. trailing slash (CHECK_161).
+const path = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = `${site}${path}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {seo && (
+      <>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:site_name" content="Reimagine Your Engine" />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:url" content={canonical} />
+        <meta name="twitter:card" content={twitterCard} />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={ogDescription} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </>
+    )}
+    <slot name="head" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+    />
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col">
+      <Header currentPath={Astro.url.pathname} />
+      <main class="flex-1"><slot /></main>
+      <Footer />
+    </div>
+  </body>
+</html>
