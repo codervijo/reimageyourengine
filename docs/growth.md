@@ -1,4 +1,4 @@
-# Growth Log — reimageyourengine.com
+# Growth Log — reimagineyourengine.com
 
 > **What this file is for:** an honest, append-only log of growth experiments
 > on this site — what was tried, what was measured, what happened. The data
@@ -38,7 +38,7 @@ this work?" is just a feeling.
 cd ~/work/projects/sites/portfolio && make run ARGS="gsc sync"
 ```
 
-Then read the row for `reimageyourengine.com`. Or pull from
+Then read the row for `reimagineyourengine.com`. Or pull from
 https://search.google.com/search-console directly.
 
 ### Format

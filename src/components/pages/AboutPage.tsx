@@ -85,7 +85,7 @@ export function AboutPage() {
             </p>
             <p className="mt-8">
               <a href="/work/" className="font-semibold text-primary underline underline-offset-4 hover:text-accent">
-                See the engineering work →
+                See selected work →
               </a>
             </p>
           </div>

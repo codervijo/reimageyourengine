@@ -15,10 +15,11 @@ interface Props {
   seo?: boolean;
 }
 
-const site = "https://reimageyourengine.com";
+// Site origin comes from astro.config.mjs `site` — never hardcode it here.
+const site = Astro.site!.origin;
 const {
   title = "Reimagine Your Engine — Derek Hoyt",
-  description = "Derek Hoyt — rotating equipment, fluid systems, equipment reliability, and process-safety support.",
+  description = "Derek Hoyt — mechanical troubleshooting and root-cause work on engines, pumps, compressors, blowers, and hydraulic systems.",
   ogTitle = title,
   ogDescription = description,
   ogType = "website",
@@ -28,6 +29,7 @@ const {
 // Canonical MUST match the served URL incl. trailing slash (CHECK_161).
 const path = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonical = `${site}${path}`;
+const ogImage = `${site}/og-image.png`;
 ---
 <!doctype html>
 <html lang="en">
@@ -44,25 +46,36 @@ const canonical = `${site}${path}`;
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
         <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Reimagine Your Engine — Rebuild. Reuse. Reimagine." />
         <meta name="twitter:card" content={twitterCard} />
         <meta name="twitter:title" content={ogTitle} />
         <meta name="twitter:description" content={ogDescription} />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="twitter:image" content={ogImage} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       </>
     )}
     <slot name="head" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#111827" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     />
   </head>
   <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-foreground">
+      Skip to content
+    </a>
     <div class="flex min-h-screen flex-col">
       <Header currentPath={Astro.url.pathname} />
-      <main class="flex-1"><slot /></main>
+      <main id="main" class="flex-1"><slot /></main>
       <Footer />
     </div>
   </body>

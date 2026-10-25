@@ -5,7 +5,7 @@ export function EquipmentServicePage() {
   return (
     <>
       <Prose>
-        <SectionHeading kicker="Service" title="Equipment service, done to the standard" />
+        <SectionHeading level={1} kicker="Service" title="Equipment service, done to the standard" />
         <p className="text-lg">
           Most process equipment doesn't fail suddenly. It fails after months of small things
           nobody had time to do — a valve adjustment deferred, an oil sample never taken, a
@@ -14,8 +14,7 @@ export function EquipmentServicePage() {
         <p className="mt-4">
           I'm Derek Hoyt. I service process equipment on site: engines and gensets, compressors and blowers,
           pumps, and gas-handling equipment. The work follows the OEM procedure and your
-          facility's maintenance plan — the same documentation trail a RAGAGEP audit will ask
-          for later.
+          facility's maintenance plan, with a written record of what was done.
         </p>
 
         <h2 className="mt-10 text-xl">What a service visit includes</h2>
@@ -23,7 +22,7 @@ export function EquipmentServicePage() {
           <li>Manufacturer-specified maintenance tasks, done on the interval — not when something breaks.</li>
           <li>Inspection findings written down in plain language, with photos where they matter.</li>
           <li>Wear items identified before they become downtime, with lead times so you can order parts ahead.</li>
-          <li>Service records your insurer, auditor, or RAGAGEP assessment can actually use.</li>
+          <li>Service records written so the next person to work on the machine can use them.</li>
         </ul>
 
         <h2 className="mt-10 text-xl">What it isn't</h2>
@@ -41,11 +40,7 @@ export function EquipmentServicePage() {
             troubleshooting
           </a>{" "}
           often come together — a machine that keeps failing usually has a maintenance history
-          that explains why. And if the service history is the gap an audit would find, a{" "}
-          <a href="/ragagep-compliance/" className="text-primary underline underline-offset-2 hover:text-accent">
-            RAGAGEP assessment
-          </a>{" "}
-          will identify the missing records or maintenance work. I can also help implement PHA
+          that explains why. I can also help implement PHA
           recommendations involving equipment and maintenance, with the aim of reducing plant downtime.
         </p>
 

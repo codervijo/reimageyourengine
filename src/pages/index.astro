@@ -3,22 +3,53 @@
 import Layout from "../layouts/Layout.astro";
 import { HomePage } from "../components/pages/HomePage";
 
-const site = "https://reimageyourengine.com";
-const title = "Engines Reimagined — Reimagine Your Engine";
-const description = "Derek Hoyt’s engineering background in rotating equipment and fluid systems, with equipment troubleshooting and support implementing PHA recommendations.";
-const ogDescription = "Derek Hoyt: design, manufacturing, and operability of rotating equipment and fluid systems, from manure weirs to reusable rocket engines.";
+// Origin comes from astro.config.mjs `site` (production: reimagineyourengine.com).
+const site = Astro.site!.origin;
+const title = "Reimagine Your Engine — Rebuild. Reuse. Reimagine. | Derek Hoyt";
+const description = "Derek Hoyt solves mechanical problems — engines, pumps, compressors, blowers, and hydraulic systems — by finding the root cause and working from there.";
+const ogDescription = "Derek Hoyt: root-cause troubleshooting and systems-level thinking for mechanical equipment, from manure weirs to reusable rocket engines.";
 // Canonical MUST match the served URL incl. trailing slash (trailingSlash:
 // 'always' in astro.config.mjs). A no-slash canonical 308-redirects and
 // breaks indexing (CHECK_161).
 const canonical = `${site}/`;
+const ogImage = `${site}/og-image.png`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site}/#organization`,
+      "name": "Reimagine Your Engine",
+      "slogan": "Rebuild. Reuse. Reimagine.",
+      "url": `${site}/`,
+      "logo": ogImage,
+      "telephone": "+1-903-635-1000",
+      "email": "derek@reimagineyourengine.com",
+      "founder": { "@id": `${site}/#derek-hoyt` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${site}/#derek-hoyt`,
+      "name": "Derek Hoyt",
+      "worksFor": { "@id": `${site}/#organization` },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site}/#website`,
+      "url": `${site}/`,
+      "name": "Reimagine Your Engine",
+      "publisher": { "@id": `${site}/#organization` },
+    },
+  ],
+};
 ---
 <Layout seo={false}>
   <Fragment slot="head">
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -26,53 +57,20 @@ const canonical = `${site}/`;
     <meta property="og:description" content={ogDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Reimagine Your Engine" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Reimagine Your Engine — Rebuild. Reuse. Reimagine." />
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
 
-    <!-- JSON-LD: Organization + WebSite + LocalBusiness (bracketed values
-         are placeholders carried over from genai/ — fill before launch). -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://reimageyourengine.com/#organization",
-      "name": "Reimagine Your Engine",
-      "description": "Derek Hoyt — rotating equipment, fluid systems, equipment reliability, and process-safety support.",
-      "url": "https://reimageyourengine.com/"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://reimageyourengine.com/#website",
-      "url": "https://reimageyourengine.com/",
-      "name": "Reimagine Your Engine",
-      "publisher": { "@id": "https://reimageyourengine.com/#organization" }
-    },
-    {
-      "@type": ["LocalBusiness", "ProfessionalService"],
-      "@id": "https://reimageyourengine.com/#business",
-      "name": "Reimagine Your Engine",
-      "description": "Derek Hoyt — rotating equipment, fluid systems, equipment reliability, and process-safety support.",
-      "telephone": "[PHONE NUMBER]",
-      "email": "[EMAIL ADDRESS]",
-      "url": "https://reimageyourengine.com/",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "[STREET ADDRESS]",
-        "addressLocality": "[CITY]",
-        "addressRegion": "[STATE]",
-        "postalCode": "[ZIP]",
-        "addressCountry": "US"
-      },
-      "areaServed": "[SERVICE AREA]"
-    }
-  ]
-}
-    </script>
+    <!-- JSON-LD: Organization + Person + WebSite. LocalBusiness (address,
+         phone) is withheld until the client supplies verified details. -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
   <HomePage />
 </Layout>

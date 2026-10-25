@@ -4,7 +4,6 @@ import { DISCIPLINES } from "../../lib/content";
 
 const ENGAGEMENTS = [
   { to: "/equipment-troubleshooting", label: "Equipment troubleshooting" },
-  { to: "/ragagep-compliance", label: "RAGAGEP compliance roadmaps" },
   { to: "/equipment-service", label: "Equipment service" },
   { to: "/life-extension", label: "Life-extension planning" },
   { to: "/reimagine", label: "Redesign & rebuild" },
@@ -16,7 +15,7 @@ export function CapabilitiesPage() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-20">
-        <SectionHeading kicker="Capabilities" title="Organized by engineering discipline" />
+        <SectionHeading level={1} kicker="Capabilities" title="Organized by area" />
         <div className="divide-y divide-border border-y border-border">
           {DISCIPLINES.map((d) => (
             <div key={d.code} className="grid gap-6 py-10 lg:grid-cols-[1fr_2fr]">

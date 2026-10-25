@@ -1,7 +1,8 @@
 import { SectionHeading, PHONE_DISPLAY, PHONE_HREF } from "../site";
 import { MediaSlot, ProjectCard } from "../work";
-import { DISCIPLINES, PROJECTS } from "../../lib/content";
+import { DEREK_STATEMENT, DISCIPLINES, PROJECTS } from "../../lib/content";
 import heroImage from "../../assets/biogas-compressor-hero.jpg";
+import lockup from "../../assets/brand/logo-horizontal-on-dark.png";
 
 
 const PRINCIPLES = [
@@ -14,37 +15,50 @@ const PRINCIPLES = [
 export function HomePage() {
   return (
     <>
-      {/* Who we are */}
-      <section className="relative flex min-h-[min(760px,calc(100svh-65px))] items-end overflow-hidden border-b border-border bg-background">
-        <img
-          src={heroImage.src}
-          alt="Compressor package and gas piping"
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover object-center grayscale"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20" />
-        <div className="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-6 sm:py-24">
-          <p className="mb-5 font-mono text-xs font-semibold tracking-[0.18em] text-accent uppercase">
-            Reimagine Your Engine · Derek Hoyt
-          </p>
-          <h1 className="max-w-4xl text-5xl text-foreground sm:text-7xl lg:text-8xl">Engines Reimagined.</h1>
-          <p className="mt-6 max-w-2xl text-lg text-foreground/80">
-            Derek Hoyt works on rotating equipment and fluid systems — their design, manufacturing,
-             and operability. He helps troubleshoot equipment failures, implement Process Hazard
-             Analysis (PHA) recommendations, and reduce plant downtime.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/work/" className="bg-primary px-5 py-3 font-semibold text-primary-foreground transition-colors hover:bg-accent">
-              See the work
+      {/* Brand → name → tagline (the approved lockup carries all three), then
+          Derek's statement. Nothing goes between the tagline and his words. */}
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto w-full max-w-4xl px-5 pt-14 pb-16 sm:px-6 sm:pt-20 sm:pb-24">
+          <h1>
+            <img
+              src={lockup.src}
+              alt="Reimagine Your Engine — Rebuild. Reuse. Reimagine."
+              width={732}
+              height={185}
+              fetchPriority="high"
+              className="h-auto w-full max-w-[600px]"
+            />
+          </h1>
+
+          {/* Client-authored text — keep verbatim (see homepage.test.js). */}
+          <blockquote className="mt-12 border-l-4 border-accent pl-6 sm:mt-16 sm:pl-8">
+            {DEREK_STATEMENT.map((para) => (
+              <p key={para} className="mt-6 text-xl leading-relaxed text-foreground first:mt-0 sm:text-2xl sm:leading-relaxed">
+                {para}
+              </p>
+            ))}
+            <footer className="mt-8 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+              — Derek Hoyt
+            </footer>
+          </blockquote>
+
+          <div className="mt-12 flex flex-wrap gap-3">
+            <a href="/about/" className="bg-primary px-5 py-3 font-semibold text-primary-foreground transition-colors hover:bg-accent">
+              Derek’s background
             </a>
-            <a href="/about/" className="border border-foreground/40 px-5 py-3 font-semibold text-foreground transition-colors hover:border-accent hover:text-accent">
-              Meet the principal
+            <a href="/work/" className="border border-foreground/40 px-5 py-3 font-semibold text-foreground transition-colors hover:border-accent hover:text-accent">
+              Selected work
             </a>
           </div>
         </div>
+        <img
+          src={heroImage.src}
+          alt="Compressor package and gas piping at an industrial site"
+          width={1920}
+          height={1080}
+          loading="lazy"
+          className="block aspect-[21/9] w-full object-cover object-center grayscale"
+        />
       </section>
 
       {/* What Derek works on */}
@@ -64,10 +78,10 @@ export function HomePage() {
         </a>
       </section>
 
-      {/* Engineering work */}
+      {/* Selected work */}
       <section className="border-t border-border bg-secondary/40">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-24">
-          <SectionHeading kicker="Engineering work" title="Selected engineering work" />
+          <SectionHeading kicker="Selected work" title="Projects and case studies" />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.slice(0, 3).map((p, i) => (
               <ProjectCard key={p.id} p={p} index={i} />
@@ -82,7 +96,7 @@ export function HomePage() {
       {/* How Derek approaches a problem */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-6 sm:py-24">
-          <SectionHeading kicker="How Derek approaches a problem" title="Do you have process equipment that has failed, is failing, or is about to fail?" />
+          <SectionHeading kicker="Problems I solve" title="Do you have process equipment that has failed, is failing, or is about to fail?" />
           <ol className="grid gap-8 sm:grid-cols-2">
             {PRINCIPLES.map((p, i) => (
               <li key={p.t} className="border-t border-border pt-5">
@@ -119,7 +133,7 @@ export function HomePage() {
               ))}
             </dl>
             <a href="/about/" className="mt-8 inline-block font-semibold text-primary underline underline-offset-4 hover:text-accent">
-              Full engineering profile →
+              Full background →
             </a>
           </div>
         </div>

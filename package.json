@@ -1,9 +1,9 @@
 {
-  "name": "reimageyourengine",
+  "name": "reimagineyourengine",
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://reimageyourengine.com/",
+  "homepage": "https://reimagineyourengine.com/",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

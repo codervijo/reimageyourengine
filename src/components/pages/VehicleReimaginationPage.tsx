@@ -5,7 +5,7 @@ export function VehicleReimaginationPage() {
   return (
     <>
       <Prose>
-        <SectionHeading
+        <SectionHeading level={1}
           kicker="Vehicle reimagination"
           title="A new job for a vehicle you already own"
         />

@@ -5,7 +5,7 @@ export function LifeExtensionPage() {
   return (
     <>
       <Prose>
-        <SectionHeading
+        <SectionHeading level={1}
           kicker="Life extension"
           title="Get more years out of the machine you already have"
         />

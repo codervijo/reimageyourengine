@@ -3,6 +3,18 @@
  * material from the firm — nothing here is a real project or credential.
  */
 
+export const TAGLINE = "REBUILD. REUSE. REIMAGINE.";
+
+/**
+ * Derek Hoyt's homepage statement — client-authored. Do not paraphrase,
+ * shorten, or "fix" punctuation; src/__tests__/homepage.test.js pins it.
+ */
+export const DEREK_STATEMENT = [
+  "I’m not writing your certification/PHA, stamping your drawings, or performing your inspection. I’m solving your problems. The HOW is what I care about.",
+  "I don’t assume you have to disassemble the entire engine in order to fix an oil consumption problem. I find the root cause and work from there.",
+  "I don’t believe you can replace one pump in the system without affecting the rest of the hydraulic circuit. I reimagine the system with the new component.",
+] as const;
+
 export type Project = {
   id: string;
   category: string;
@@ -57,7 +69,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "p5",
-    category: "Engineering analysis",
+    category: "Root-cause analysis",
     title: "[PROJECT TITLE — failure / root-cause analysis]",
     media: "[PLOT or FAILED PART PHOTO — fracture face, vibration spectrum, thermal map]",
     challenge: "[Recurring failure or performance shortfall in the field]",
@@ -80,8 +92,8 @@ export const PROJECTS: Project[] = [
 export const DISCIPLINES = [
   {
     code: "01",
-    name: "Mechanical Engineering",
-    summary: "Rotating and reciprocating machinery, from first-principles design to field rebuild.",
+    name: "Mechanical Systems",
+    summary: "Rotating and reciprocating machinery — engines, pumps, compressors, blowers — from root cause to rebuild.",
     items: [
       "Reciprocating & lean-burn gas engines — combustion, valvetrain, lubrication",
       "Screw, reciprocating, and booster compressors",
@@ -93,7 +105,7 @@ export const DISCIPLINES = [
   },
   {
     code: "02",
-    name: "Electrical Engineering",
+    name: "Electrical & Controls",
     summary: "Power, controls, and instrumentation that keep machines protected and observable.",
     items: [
       "Engine and compressor control panels, interlocks, shutdown logic",
@@ -106,7 +118,7 @@ export const DISCIPLINES = [
   },
   {
     code: "03",
-    name: "Systems Engineering",
+    name: "Systems Integration",
     summary: "How the pieces interact — process, machine, controls, and the people running them.",
     items: [
       "Gas-handling trains: conditioning, H₂S and siloxane removal, compression",
@@ -119,13 +131,12 @@ export const DISCIPLINES = [
   },
   {
     code: "04",
-    name: "Process Safety & Compliance",
-    summary: "Practical support for process-safety recommendations and equipment integrity.",
+    name: "PHA Recommendation Follow-through",
+    summary: "Practical help turning existing PHA recommendations into equipment and maintenance work.",
     items: [
-      "RAGAGEP gap assessments with prioritized closure plans",
       "Implementation of Process Hazard Analysis (PHA) recommendations",
-      "Codes and standards: [LIST APPLICABLE — e.g. NFPA, API, ASME]",
-      "Mechanical-integrity review and inspection records structured for audit",
+      "Sequencing changes around operations, outages, and budget",
+      "Hydraulic and fluid-system changes considered across the whole circuit",
     ],
   },
 ] as const;

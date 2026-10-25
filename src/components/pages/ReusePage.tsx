@@ -5,7 +5,7 @@ export function ReusePage() {
   return (
     <>
       <Prose>
-        <SectionHeading
+        <SectionHeading level={1}
           kicker="Reuse"
           title="Existing vehicles, assessed for continued use"
         />

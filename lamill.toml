@@ -8,7 +8,7 @@ schema = "lamill-toml-v1"
 platform = "cf-pages"
 production_branch = "main"
 custom_domains = [
-    "reimageyourengine.com",
+    "reimagineyourengine.com",
 ]
 
 [index]
@@ -16,7 +16,7 @@ indexnow_key = "e588e72aad5246343d93a1c681a9368d"
 indexnow_enabled = true
 
 [client]
-business_name = "Reiamge Your Engine"
+business_name = "Reimagine Your Engine"
 service_area = "Redding,CA"
 wants = "credibility"
 deadline = "Nov 2026"
@@ -24,7 +24,7 @@ deadline = "Nov 2026"
 [stack]
 framework = "astro"
 
-# Tracked todos for reimageyourengine.com. status: "done" | "open".
+# Tracked todos for reimagineyourengine.com. status: "done" | "open".
 [[todo]]
 status = "open"
 priority = "medium"

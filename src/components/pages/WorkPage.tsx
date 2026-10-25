@@ -16,9 +16,9 @@ export function WorkPage() {
   return (
     <>
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-6 sm:py-20">
-        <SectionHeading kicker="Engineering work" title="Design, hardware, and failure analysis" />
+        <SectionHeading level={1} kicker="Selected work" title="Design, hardware, and failure analysis" />
         <p className="max-w-2xl text-muted-foreground">
-          Each project is described the same way: the problem, how it was engineered, and what
+          Each project is described the same way: the problem, how it was approached, and what
           came out the other end. Details are shared where clients permit.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

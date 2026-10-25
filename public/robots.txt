@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://reimageyourengine.com/sitemap-index.xml
+Sitemap: https://reimagineyourengine.com/sitemap-index.xml

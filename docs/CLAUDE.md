@@ -1,4 +1,4 @@
-# CLAUDE.md — reimageyourengine.com
+# CLAUDE.md — reimagineyourengine.com
 
 Per-project orientation for Claude. Read this first when picking up
 work on this site. Index of conventions, deferred decisions, and
@@ -7,7 +7,7 @@ non-features that aren't obvious from the code or git history.
 ## Project
 
 <1-2 sentence description — fill in: what does this site do, who is
-the user, what is the stack (reimageyourengine.com runs on the sites/* workspace
+the user, what is the stack (reimagineyourengine.com runs on the sites/* workspace
 shared infra: Vite or Astro + pnpm + Cloudflare Pages, with Makefile
 forwarding to the central builder).>
 

@@ -5,7 +5,7 @@ export function ReimaginePage() {
   return (
     <>
       <Prose>
-        <SectionHeading
+        <SectionHeading level={1}
           kicker="Reimagine"
           title="When the machine itself is the problem"
         />
@@ -36,16 +36,12 @@ export function ReimaginePage() {
           </li>
           <li>
             <strong className="text-foreground">Redesign and rebuild.</strong> Component changes,
-            material upgrades, derating or rerating, auxiliary system changes — engineered, not
+            material upgrades, derating or rerating, auxiliary system changes — worked through, not
             improvised.
           </li>
           <li>
             <strong className="text-foreground">Document the new configuration.</strong> So the
-            next person to work on it knows what it is, and your{" "}
-            <a href="/ragagep-compliance/" className="text-primary underline underline-offset-2 hover:text-accent">
-              RAGAGEP file
-            </a>{" "}
-            stays honest.
+            next person to work on it knows what it is.
           </li>
         </ul>
 

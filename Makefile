@@ -1,4 +1,4 @@
-PROJ := reimageyourengine.com
+PROJ := reimagineyourengine.com
 
 .DEFAULT_GOAL := help
 

@@ -1,4 +1,4 @@
-# AI Agent Context — reimageyourengine.com
+# AI Agent Context — reimagineyourengine.com
 
 ## Summary
 
@@ -54,14 +54,14 @@ need Node/pnpm installed; the container does. The parent `Makefile`
 ### Common Makefile targets
 
 This project's local `Makefile` forwards every target to `../Makefile` with
-`proj=reimageyourengine.com`, so these all work either from this dir or from `sites/`:
+`proj=reimagineyourengine.com`, so these all work either from this dir or from `sites/`:
 
 | Command | What it does |
 |---|---|
 | `make buildsh` *(from `sites/`)* | Drop into a bash shell inside the docker container at `/usr/src/app` (= `sites/` mounted in). |
-| `make run` *(from here)* / `make run proj=reimageyourengine.com` *(from `sites/`)* | `pnpm install` then start dev server (auto-detected). |
-| `make check-vite proj=reimageyourengine.com` | Start the dev server, skipping install. |
-| `make test proj=reimageyourengine.com` | `pnpm install` + `pnpm build` + `pnpm test`. **Hard-fails outside docker** — `make buildsh` first, or `docker exec`. |
+| `make run` *(from here)* / `make run proj=reimagineyourengine.com` *(from `sites/`)* | `pnpm install` then start dev server (auto-detected). |
+| `make check-vite proj=reimagineyourengine.com` | Start the dev server, skipping install. |
+| `make test proj=reimagineyourengine.com` | `pnpm install` + `pnpm build` + `pnpm test`. **Hard-fails outside docker** — `make buildsh` first, or `docker exec`. |
 | `make deps` | Install pnpm globally (image bootstrap). |
 | `make clean` *(from `sites/`)* | Remove root `package.json`, lockfile, node_modules. Don't run inside a project dir. |
 
@@ -72,7 +72,7 @@ target inside the container, find the running container and `docker exec` in:
 
 ```bash
 docker ps                                               # find the sites1 container name
-docker exec -w /usr/src/app <name> make test proj=reimageyourengine.com
+docker exec -w /usr/src/app <name> make test proj=reimagineyourengine.com
 ```
 
 ## Deployment info
@@ -83,13 +83,13 @@ docker exec -w /usr/src/app <name> make test proj=reimageyourengine.com
 - **Build:** `pnpm build` → `dist/`. Wrangler picks up `dist/` via `wrangler.jsonc`.
 - **Deploy:** `wrangler deploy` (locally) or via Cloudflare's Git integration on push.
   Initial GitHub repo + CF Pages project setup is automated by the portfolio CLI:
-  `cd ../portfolio && make run ARGS="deploy reimageyourengine.com"` runs `gh repo create` and
+  `cd ../portfolio && make run ARGS="deploy reimagineyourengine.com"` runs `gh repo create` and
   POSTs to the CF Pages API with `build_command="pnpm run build"` set explicitly
   (avoids the bun-detection trap kwizicle.com hit). Idempotent; safe to re-run.
 - **Vite version:** must be ≥ 6.0.0 — Wrangler's Vite integration rejects Vite 5.
 - **Env vars:** set `VITE_*` vars (e.g. `VITE_GA_ID`) in the Cloudflare Workers project's environment-variable settings — they're inlined at build time.
-- **Live URL:** https://reimageyourengine.com/  *(update once first deploy succeeds)*
-- **Canonical host:** the **apex** (`https://reimageyourengine.com/`) is the ONLY canonical host fleet-wide — `www` and `http` must 308→apex, and there is no `www`-canonical option. Set Astro's `site: "https://reimageyourengine.com"` (apex, never `www`) so every `<link rel="canonical">` and the generated sitemap `<loc>` URLs use the apex. Enforced by CHECK_150 (redirect) + CHECK_158 (canonical tags) + CHECK_159 (sitemap) + CHECK_160 (GSC-registered sitemap).
+- **Live URL:** https://reimagineyourengine.com/  *(update once first deploy succeeds)*
+- **Canonical host:** the **apex** (`https://reimagineyourengine.com/`) is the ONLY canonical host fleet-wide — `www` and `http` must 308→apex, and there is no `www`-canonical option. Set Astro's `site: "https://reimagineyourengine.com"` (apex, never `www`) so every `<link rel="canonical">` and the generated sitemap `<loc>` URLs use the apex. Enforced by CHECK_150 (redirect) + CHECK_158 (canonical tags) + CHECK_159 (sitemap) + CHECK_160 (GSC-registered sitemap).
 - **Legacy:** if a `vercel.json` or `.vercelignore` is present from a Lovable export, it's inert on Cloudflare and safe to delete.
 
 ## Content strategy
@@ -100,10 +100,10 @@ Build a concise, credibility-focused website featuring a homepage, Derek's profe
 
 ### Post-deploy checklist (do these once after the first successful deploy)
 
-- [ ] Verify in **Google Search Console** at https://search.google.com/search-console — add as `sc-domain:reimageyourengine.com` property; verify via DNS TXT record. Until this is done, no SEO traffic data is observable for this site (and the workspace-wide `30 commercial sites with traffic` goal can't credit it).
-- [ ] Submit the sitemap (`https://reimageyourengine.com/sitemap-index.xml` — the apex host; `@astrojs/sitemap` emits `-index`, not `/sitemap.xml`) inside GSC. *(The deploy pipeline auto-submits the robots.txt-declared sitemap; this is the manual fallback.)*
+- [ ] Verify in **Google Search Console** at https://search.google.com/search-console — add as `sc-domain:reimagineyourengine.com` property; verify via DNS TXT record. Until this is done, no SEO traffic data is observable for this site (and the workspace-wide `30 commercial sites with traffic` goal can't credit it).
+- [ ] Submit the sitemap (`https://reimagineyourengine.com/sitemap-index.xml` — the apex host; `@astrojs/sitemap` emits `-index`, not `/sitemap.xml`) inside GSC. *(The deploy pipeline auto-submits the robots.txt-declared sitemap; this is the manual fallback.)*
 - [ ] Update the **Live URL** above with the actual deploy URL.
-- [ ] Run `make run ARGS="cleanup"` from `sites/portfolio/` so `data/portfolio.json` reflects the new project's state (and `project status reimageyourengine.com` resolves cleanly).
+- [ ] Run `make run ARGS="cleanup"` from `sites/portfolio/` so `data/portfolio.json` reflects the new project's state (and `project status reimagineyourengine.com` resolves cleanly).
 
 ## How to run
 
@@ -118,7 +118,7 @@ make test      # → pnpm install + build + test (must be inside container)
 ## How this project is checked
 
 This project is enforced against shared sites/* conventions by
-`portfolio project check reimageyourengine.com` (run from `sites/portfolio/`).
+`portfolio project check reimagineyourengine.com` (run from `sites/portfolio/`).
 Conformance is driven by the universal check catalog (CHECK_*) —
 e.g. CHECK_020 (own-git-repo), CHECK_002 (has-ai-agents-md),
 CHECK_007 (has-docs-prompts), CHECK_008 (has-docs-growth — `docs/growth.md`

@@ -17,6 +17,14 @@
 /sitemap-*.xml
   Cache-Control: public, max-age=0, must-revalidate
 
+# Staging / preview hosts must never be indexed — only the apex production
+# domain. Host-scoped rules don't touch reimagineyourengine.com.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

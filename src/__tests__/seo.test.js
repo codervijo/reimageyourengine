@@ -33,12 +33,18 @@ describe('SEO baseline (src/pages/index.astro)', () => {
   });
 
   it('has favicon link', () => {
-    expect(html).toMatch(/<link\s+rel="icon"[^>]*href="\/favicon\.svg"/);
+    expect(html).toMatch(/<link\s+rel="icon"[^>]*href="\/favicon\.(svg|ico)"/);
+  });
+
+  it('has og:image + twitter:image', () => {
+    expect(html).toMatch(/property="og:image"/);
+    expect(html).toMatch(/name="twitter:image"/);
   });
 
   it('has JSON-LD Organization + WebSite', () => {
+    // The graph is built in frontmatter and emitted via set:html — check raw.
     expect(html).toMatch(/application\/ld\+json/);
-    expect(html).toMatch(/"@type":\s*"Organization"/);
-    expect(html).toMatch(/"@type":\s*"WebSite"/);
+    expect(raw).toMatch(/"@type":\s*"Organization"/);
+    expect(raw).toMatch(/"@type":\s*"WebSite"/);
   });
 });

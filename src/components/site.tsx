@@ -1,9 +1,12 @@
 import type { ReactNode } from "react";
+import gearMark from "../assets/brand/gear-on-dark.png";
+import lockup from "../assets/brand/logo-horizontal-on-dark.png";
 
 export const SITE_NAME = "Reimagine Your Engine";
-export const PHONE_DISPLAY = "[PHONE NUMBER]";
-export const PHONE_HREF = "tel:+1XXXXXXXXXX"; // TODO: real phone number
-export const EMAIL = "[EMAIL ADDRESS]";
+// Client-supplied 2026-10-24.
+export const PHONE_DISPLAY = "(903) 635-1000";
+export const PHONE_HREF = "tel:+19036351000";
+export const EMAIL = "derek@reimagineyourengine.com";
 
 const NAV = [
   { to: "/work/", label: "Work" },
@@ -22,9 +25,12 @@ export function Header({ currentPath }: { currentPath?: string }) {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-5 py-4 sm:px-6">
-        <a href="/" className="flex items-center gap-3 font-display text-base font-bold text-primary uppercase">
-          <span aria-hidden="true" className="h-4 w-4 bg-accent" />
-          Reimagine Your Engine
+        <a href="/" className="flex items-center gap-3 font-display text-base leading-tight font-extrabold tracking-wide uppercase">
+          <img src={gearMark.src} alt="" width={36} height={35} className="h-9 w-auto" />
+          <span>
+            <span className="text-primary">Reimagine</span>{" "}
+            <span className="text-accent">Your Engine</span>
+          </span>
         </a>
         <nav aria-label="Primary" className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm font-medium">
           {NAV.map((item) => (
@@ -55,10 +61,17 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-12 text-sm text-muted-foreground sm:px-6">
         <div className="grid gap-8 sm:grid-cols-3">
           <div>
-            <p className="font-display font-bold text-primary uppercase">Reimagine Your Engine</p>
-            <p className="mt-2">
-              Derek Hoyt — rotating equipment, fluid systems, equipment reliability, and
-              process-safety support.
+            <img
+              src={lockup.src}
+              alt="Reimagine Your Engine — Rebuild. Reuse. Reimagine."
+              width={732}
+              height={185}
+              loading="lazy"
+              className="h-auto w-64 max-w-full"
+            />
+            <p className="mt-4">
+              Derek Hoyt — mechanical troubleshooting and root-cause work on engines, pumps,
+              compressors, blowers, and hydraulic systems.
             </p>
           </div>
           <div>
@@ -68,9 +81,11 @@ export function Footer() {
                 {PHONE_DISPLAY}
               </a>
               <br />
-              {EMAIL}
+              <a href={`mailto:${EMAIL}`} className="break-all hover:text-foreground">
+                {EMAIL}
+              </a>
               <br />
-              [STREET ADDRESS], [CITY], [STATE] [ZIP]
+              Redding, California
             </p>
           </div>
           <div>
@@ -86,9 +101,16 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <p className="mt-8 border-t border-border pt-4">
-          © {new Date().getFullYear()} {SITE_NAME}. [LEGAL ENTITY NAME]
-        </p>
+        <div className="mt-8 flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-border pt-4">
+          <p>© {new Date().getFullYear()} {SITE_NAME}.</p>
+          {/* Developer credit — client-consented (v2.B). Plain brand anchor only. */}
+          <p>
+            Website by{" "}
+            <a href="https://lamill.io/" className="underline underline-offset-2 hover:text-foreground">
+              LaMill
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
@@ -110,7 +132,9 @@ export function Prose({ children }: { children: ReactNode }) {
   return <div className="mx-auto max-w-3xl px-5 py-14 sm:py-24">{children}</div>;
 }
 
-export function SectionHeading({ kicker, title }: { kicker?: string; title: string }) {
+/** `level={1}` when the heading is the page title (one <h1> per page). */
+export function SectionHeading({ kicker, title, level = 2 }: { kicker?: string; title: string; level?: 1 | 2 }) {
+  const H = level === 1 ? "h1" : "h2";
   return (
     <div className="mb-8">
       {kicker && (
@@ -118,7 +142,7 @@ export function SectionHeading({ kicker, title }: { kicker?: string; title: stri
           {kicker}
         </p>
       )}
-      <h2 className="text-2xl sm:text-3xl">{title}</h2>
+      <H className="text-2xl sm:text-3xl">{title}</H>
     </div>
   );
 }

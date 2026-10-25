@@ -39,7 +39,7 @@ export function ContactPage() {
         </p>
         <p className="mt-4 text-muted-foreground">
           If it goes to voicemail, leave the facility name and what's not running. Email:{" "}
-          <span className="todo">{EMAIL}</span>
+          <a href={`mailto:${EMAIL}`} className="break-all text-primary underline underline-offset-2 hover:text-accent">{EMAIL}</a>
         </p>
 
         <div className="mt-12 border-t border-border pt-10">
