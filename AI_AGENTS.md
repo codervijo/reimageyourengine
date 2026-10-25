@@ -199,4 +199,20 @@ the bootstrap (this scaffold); v1.A is the first real shipped capability.
 
 ## Out of scope / don't touch
 
-- *(leave blank — fill in when something is)*
+- **CLIENT PROJECT — not the operator's own site.** Reimagine Your Engine is
+  Derek Hoyt's business; LaMill (the operator) is the web developer only.
+  The brand, content, and domain belong to the client.
+- **Domain, DNS, and email are the client's — be very, very careful.**
+  `reimagineyourengine.com` is registered in the client's Porkbun account
+  (not ours), with DNS at Porkbun and live Proton Mail (MX/SPF/DKIM/DMARC).
+  We have no access to it, and must not change nameservers, DNS records,
+  or email settings — or ask the client to — without explicit operator
+  instruction. A mistake here breaks the client's email.
+- **Our turf is website hosting only:** CF Pages project
+  `reimagineyourengine` (staging https://reimagineyourengine.pages.dev/).
+  A pending CF zone for the domain exists in our account but was never
+  delegated — leave it inert (see `docs/Prompts.md` 2026-10-24).
+- **Client-authored copy** (Derek's homepage statement in
+  `src/lib/content.ts`) is verbatim — never paraphrase it.
+- No PE / licensed-engineering claims; no RAGAGEP offering; no Hoyt
+  Lubrication Upgrades / AMSOIL content without explicit approval.

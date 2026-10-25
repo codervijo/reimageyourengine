@@ -55,3 +55,14 @@ v1.D copy-audit findings (unresolved — need client/operator decision):
 > 7d6a038 succeeded) → staging https://reimagineyourengine.pages.dev/;
 > old CF Pages project `reimageyourengine` deleted. Misspelled CF zone
 > `reimageyourengine.com` still exists in the account (untouched).
+
+## 2026-10-24 — Cloudflare setup paused (client owns domain + email)
+
+> reimagineyourengine.com is registered in the client's Porkbun account (not
+> ours); DNS + Proton Mail stay with the client. Website hosting is ours.
+> Left in place, inert: CF zone 304f19848b2d607d31da3c32d93367f2 (status
+> pending, NS dom/kristina.ns.cloudflare.com — never delegated) holding a copy
+> of the email records, apex CNAME → reimagineyourengine.pages.dev, www→apex
+> redirect, and the apex attached to Pages project `reimagineyourengine`
+> (initializing). Open decision: (1) www-canonical with DNS kept at Porkbun
+> and the pending zone deleted, or (2) delegate NS to Cloudflare.
